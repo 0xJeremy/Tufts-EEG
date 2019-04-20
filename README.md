@@ -1,0 +1,2 @@
+# Tufts-EEG
+This repository will contain the code and schematics developed by the Tufts University BCI team. This repository in particular will revolve around the EEG headset being developed, and the applications made.
