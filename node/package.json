@@ -1,0 +1,35 @@
+{
+  "name": "tufts-eeg",
+  "version": "1.0.0",
+  "description": "A project for the Tufts BCI Team",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/0xJeremy/Tufts-EEG.git"
+  },
+  "keywords": [
+    "Tufts",
+    "EEG",
+    "BCI",
+    "MAKE"
+  ],
+  "author": "Jeremy Kanovsky",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/0xJeremy/Tufts-EEG/issues"
+  },
+  "homepage": "https://github.com/0xJeremy/Tufts-EEG#readme",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1",
+    "fs": "0.0.1-security",
+    "http": "0.0.0",
+    "net": "^1.0.2",
+    "path": "^0.12.7",
+    "xmlhttprequest": "^1.8.0"
+  }
+}
