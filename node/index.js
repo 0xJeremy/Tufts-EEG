@@ -1,13 +1,8 @@
-var http = require('http').createServer(app);
-var XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
 const express = require('express')
-const path = require('path')
 var app = express();
 var bodyParser = require('body-parser');
 const net = require('net');
 const fs = require('fs');
-
-console.log('Process Started');
 
 var probes;
 
@@ -33,14 +28,13 @@ app.use(function (req, res, next) {
     next();
 });
 
-app.use(bodyParser.json());
-
-app.set('views', __dirname + '/views');
-app.use('/', express.static(__dirname + '/views'));
-
 ///////////////////////////
 /// FRONT-END ENDPOINTS ///
 ///////////////////////////
+
+app.use(bodyParser.json());
+app.set('views', __dirname + '/views');
+app.use('/', express.static(__dirname + '/views'));
 
 app.get('/', function(req, res) {
     res.render('index.html');
@@ -76,7 +70,7 @@ io.on('connection', function(socket){
 const handler = (socket) => {
 	socket.on('data', (bytes) => {
 		const msg = bytes.toString();
-		console.log('Probe Data Received: ' + msg);
+		console.log('Python Data Received: ' + msg);
 		probes = JSON.parse(msg);
 		io.emit('sendProbes', probes);
 	});
