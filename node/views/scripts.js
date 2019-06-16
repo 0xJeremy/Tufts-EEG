@@ -1,5 +1,6 @@
 var xhr = new XMLHttpRequest();
 var text = document.getElementById("comTest");
+var socket = io();
 
 LOCAL_PATH = 'http://localhost:5000/getProbe?id=0';
 
@@ -13,3 +14,5 @@ xhr.onreadystatechange = function() {
 
 xhr.open('GET', LOCAL_PATH, true);
 xhr.send();
+
+socket.emit('OK');

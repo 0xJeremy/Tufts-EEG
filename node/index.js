@@ -1,4 +1,4 @@
-const http = require('http');
+var http = require('http').createServer(app);
 var XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
 const express = require('express')
 const path = require('path')
@@ -17,6 +17,9 @@ var probes;
 
 const SOCKETPATH = '/tmp/node-python-sock';
 const PORT = process.env.PORT || 5000
+
+var server = app.listen(PORT, function() { console.log("Listening on port " + PORT)});
+var io = require('socket.io').listen(server);
 
 ///////////////////////
 /// EXPRESS HEADERS ///
@@ -49,6 +52,20 @@ app.get('/getProbe', function(req, res){
    	res.send(probes);
 });
 
+////////////////////////
+/// FRONT-END SOCKET ///
+////////////////////////
+
+io.on('connection', function(socket){
+  console.log('Client Connected!');
+  socket.on('disconnect', function(){
+    console.log('Client Disconnected :(');
+  });
+  socket.on('OK', function(msg){
+    console.log('Received OK from client');
+  });
+});
+
 ////////////////////////////
 /// PYTHON COMMUNICATION ///
 ////////////////////////////
@@ -65,5 +82,3 @@ fs.unlink(
 	SOCKETPATH,
 	() => net.createServer(handler).listen(SOCKETPATH)
 );
-
-app.listen(PORT, function() { console.log("Listening on port " + PORT)});
