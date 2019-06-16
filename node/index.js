@@ -7,6 +7,10 @@ var bodyParser = require('body-parser');
 const net = require('net');
 const fs = require('fs');
 
+console.log('Process Started');
+
+var probes;
+
 //////////////////
 /// PARAMETERS ///
 //////////////////
@@ -42,7 +46,7 @@ app.get('/', function(req, res) {
 app.get('/getProbe', function(req, res){
 	var probeID = req.query.id;
    	console.log('GET Request with id: ' + probeID);
-   	res.send(probe[probeID]);
+   	res.send(probes);
 });
 
 ////////////////////////////
@@ -61,3 +65,5 @@ fs.unlink(
 	SOCKETPATH,
 	() => net.createServer(handler).listen(SOCKETPATH)
 );
+
+app.listen(PORT, function() { console.log("Listening on port " + PORT)});
