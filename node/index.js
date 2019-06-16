@@ -64,6 +64,9 @@ io.on('connection', function(socket){
   socket.on('OK', function(msg){
     console.log('Received OK from client');
   });
+  socket.on('getProbes', function(msg){
+  	io.emit('sendProbes', probes);
+  })
 });
 
 ////////////////////////////
@@ -75,6 +78,7 @@ const handler = (socket) => {
 		const msg = bytes.toString();
 		console.log('Probe Data Received: ' + msg);
 		probes = JSON.parse(msg);
+		io.emit('sendProbes', probes);
 	});
 };
 

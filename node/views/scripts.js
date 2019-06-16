@@ -16,3 +16,9 @@ xhr.open('GET', LOCAL_PATH, true);
 xhr.send();
 
 socket.emit('OK');
+
+socket.on('sendProbes', function(msg) {
+	console.log('Read sendProbes!');
+	console.log(msg);
+	text.innerHTML = msg.message;
+})
