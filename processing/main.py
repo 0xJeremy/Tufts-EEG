@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+
 import sys, os
 from utils.comm import comm
 import utils.file_logger as logger
@@ -18,10 +20,9 @@ socket = comm()
 ############
 
 def main():
-	data = []
 	while True:
 		try:
-			data.append(input())
+			data =[input() for i in range(8)]
 			socket.send(data)
 			
 		except KeyboardInterrupt:

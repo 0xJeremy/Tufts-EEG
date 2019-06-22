@@ -2,12 +2,37 @@
 <html>
 <head>
 	<title>Tufts EEG</title>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 	<link rel="stylesheet" href="main.css">
-	<script src="socket.io.js"></script>
+	<script src="js/socket.io.js"></script>
 </head>
 <body>
-<div id='comTest'></div>
+
+</body>
+<body>
+	<div class="container-fluid bg">
+		<div class="container-fluid center-vertical">
+			<p class="title-text text-center">// <i>Tufts</i> BCI Team //</p>
+			<div class="container-fluid w-75 bg-inner shadow-lg mb-5 rounded">
+				<div class="d-flex justify-content-center" id='threejsbrain'></div>
+				<table class="table table-striped w-75 container-fluid">
+				  <thead>
+					<tr>
+					  <th scope="col">Timestamp</th>
+					  <th scope="col">Probe Data</th>
+					  <th scope="col">Input Source</th>
+					</tr>
+				  </thead>
+				  <tbody id="probeTable">
+				  </tbody>
+				</table>
+			</div>
+		</div>
+	</div>
 </body>
 
-<script src="scripts.js"></script>
+<script type="text/javascript" src="scripts.js"></script>
+<script type="text/javascript" src="js/three.js"></script>
+<script type="text/javascript" src="js/OBJLoader.js"></script>
+<script type="text/javascript" src="render.js"></script>
 </html>

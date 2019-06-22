@@ -1,5 +1,5 @@
 // var xhr = new XMLHttpRequest();
-var text = document.getElementById("comTest");
+var displayProbe = document.getElementById("probeTable");
 var socket = io();
 
 // LOCAL_PATH = 'http://localhost:5000/getProbe?id=0';
@@ -15,9 +15,13 @@ var socket = io();
 // xhr.open('GET', LOCAL_PATH, true);
 // xhr.send();
 
+displayProbe.innerHTML = "<tr><th scope=\"row\">NaN</th><td>Null</td><td>Null</td></tr>";
+
 socket.emit('OK');
 
 socket.on('sendProbes', function(msg) {
 	console.log(msg);
-	text.innerHTML = msg;
+	displayProbe.innerHTML = "<tr><th scope=\"row\">" + msg.time + "</th><td>" + msg.data + "</td><td>Python Processing</td></tr>";
 })
+
+
