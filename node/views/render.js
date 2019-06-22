@@ -1,6 +1,6 @@
-//////////////////////
-// GLOBAL VARIABLES //
-//////////////////////
+////////////////////////
+/// GLOBAL VARIABLES ///
+////////////////////////
 
 var container, stats;
 
@@ -17,9 +17,9 @@ animate();
 
 function init() {
 
-    ////////////////
-    // INITIALIZE //
-    ////////////////
+    //////////////////
+    /// INITIALIZE ///
+    //////////////////
 
     var puthere = document.getElementById("threejsbrain");
     container = document.createElement('div');
@@ -28,9 +28,9 @@ function init() {
     camera = new THREE.PerspectiveCamera(45, 1, 1, 2000);
     camera.position.z = -10;
 
-    ///////////
-    // SCENE //
-    ///////////
+    /////////////
+    /// SCENE ///
+    /////////////
 
     scene = new THREE.Scene();
 
@@ -41,18 +41,18 @@ function init() {
     directionalLight.position.set(0, 0, -1);
     scene.add(directionalLight);
 
-    /////////////
-    // TEXTURE //
-    /////////////
+    ///////////////
+    /// TEXTURE ///
+    ///////////////
 
     var manager = new THREE.LoadingManager();
     manager.onProgress = function ( item, loaded, total ) {
 	   console.log(item, loaded, total);
     };
 
-    /////////////////
-    // BRAIN MODEL //
-    /////////////////
+    ///////////////////
+    /// BRAIN MODEL ///
+    ///////////////////
 
     var loader = new THREE.OBJLoader( manager );
     loader.load( '/static/brain.OBJ', function ( object ) {
@@ -61,33 +61,33 @@ function init() {
 	   scene.add(object);
     });
 
-    //////////////
-    // RENDERER //
-    //////////////
+    ////////////////
+    /// RENDERER ///
+    ////////////////
 
     renderer = new THREE.WebGLRenderer();
     size = Math.min(window.innerWidth, window.innerHeight);
     renderer.setSize( size*0.6, size*0.6 );
     container.appendChild(renderer.domElement);
 
-    document.addEventListener('mousemove', onDocumentMouseMove, false);
+    // document.addEventListener('mousemove', onDocumentMouseMove, false);
 
     window.addEventListener('resize', onWindowResize, false);
 }
 
-///////////////
-// CALLBACKS //
-///////////////
+/////////////////
+/// CALLBACKS ///
+/////////////////
 
 function onWindowResize() {
     size = Math.min(window.innerWidth, window.innerHeight);
     renderer.setSize( size*0.6, size*0.6 );
 }
 
-function onDocumentMouseMove( event ) {
-    mouseX = (event.clientX - windowHalfX) / 2;
-    mouseY = (event.clientY - windowHalfY) / 2;
-}
+// function onDocumentMouseMove( event ) {
+//     mouseX = (event.clientX - windowHalfX) / 2;
+//     mouseY = (event.clientY - windowHalfY) / 2;
+// }
 
 function animate() {
     requestAnimationFrame( animate );

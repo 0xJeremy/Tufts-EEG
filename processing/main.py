@@ -22,7 +22,8 @@ socket = comm()
 def main():
 	while True:
 		try:
-			data =[input() for i in range(8)]
+			tmp = input()
+			data =[tmp for i in range(8)]
 			socket.send(data)
 			
 		except KeyboardInterrupt:

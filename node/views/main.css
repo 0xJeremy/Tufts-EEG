@@ -1,6 +1,6 @@
 .bg {
 	min-height: 100%;
-	position: fixed;
+	position: absolute;
 	font-family: 'Open Sans', sans-serif;
 	-webkit-background-size: cover;
 	-moz-background-size: cover;
