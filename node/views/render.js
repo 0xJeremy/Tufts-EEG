@@ -1,12 +1,13 @@
+//////////////////////
+// GLOBAL VARIABLES //
+//////////////////////
+
 var container, stats;
 
 var camera, scene, renderer;
 var directionalLight;
 
 var mouseX = 0, mouseY = 0;
-
-var windowHalfX = window.innerWidth / 2;
-var windowHalfY = window.innerHeight / 2;
 
 var brain;
 
@@ -15,77 +16,78 @@ animate();
 
 
 function init() {
-    // We put the container inside a div with id #threejsbrain
-    var puthere = document.getElementById("threejsbrain");
-    container = document.createElement( 'div' );
-    puthere.appendChild( container );
 
-    // Uncomment this if your example is full screen.
-    // camera = new THREE.PerspectiveCamera( 45, window.innerWidth / window.innerHeight, 1, 2000 );
-    camera = new THREE.PerspectiveCamera( 45, 1, 1, 2000 );
+    ////////////////
+    // INITIALIZE //
+    ////////////////
+
+    var puthere = document.getElementById("threejsbrain");
+    container = document.createElement('div');
+    puthere.appendChild(container);
+
+    camera = new THREE.PerspectiveCamera(45, 1, 1, 2000);
     camera.position.z = -10;
 
-    // scene
+    ///////////
+    // SCENE //
+    ///////////
 
     scene = new THREE.Scene();
 
-    var ambient = new THREE.AmbientLight( 0x111111 );
+    var ambient = new THREE.AmbientLight(0x111111);
     scene.add( ambient );
 
-    directionalLight = new THREE.DirectionalLight( 0xffeedd );
-    directionalLight.position.set( 0, 0, -1 );
-    scene.add( directionalLight );
+    directionalLight = new THREE.DirectionalLight(0xffeedd);
+    directionalLight.position.set(0, 0, -1);
+    scene.add(directionalLight);
 
-    // texture
+    /////////////
+    // TEXTURE //
+    /////////////
 
     var manager = new THREE.LoadingManager();
     manager.onProgress = function ( item, loaded, total ) {
-
-	console.log( item, loaded, total );
-
+	   console.log(item, loaded, total);
     };
 
-    // model
-    // Load our brain
+    /////////////////
+    // BRAIN MODEL //
+    /////////////////
 
     var loader = new THREE.OBJLoader( manager );
     loader.load( '/static/brain.OBJ', function ( object ) {
+	   brain = object;
+	   object.position.y = 0;
+	   scene.add(object);
+    });
 
-	brain = object;
-	object.position.y = 0;
-	scene.add( object );
-
-    } );
-
-    //
+    //////////////
+    // RENDERER //
+    //////////////
 
     renderer = new THREE.WebGLRenderer();
     size = Math.min(window.innerWidth, window.innerHeight);
     renderer.setSize( size*0.6, size*0.6 );
-    // renderer.setSize( window.innerWidth, window.innerHeight );
-    container.appendChild( renderer.domElement );
+    container.appendChild(renderer.domElement);
 
-    document.addEventListener( 'mousemove', onDocumentMouseMove, false );
+    document.addEventListener('mousemove', onDocumentMouseMove, false);
 
-    // window.addEventListener( 'resize', onWindowResize, false );
+    window.addEventListener('resize', onWindowResize, false);
 }
 
+///////////////
+// CALLBACKS //
+///////////////
+
 function onWindowResize() {
-    windowHalfX = window.innerWidth / 2;
-    windowHalfY = window.innerHeight / 2;
-
-    camera.aspect = window.innerWidth / window.innerHeight;
-    camera.updateProjectionMatrix();
-
-    renderer.setSize( window.innerWidth, window.innerHeight );
+    size = Math.min(window.innerWidth, window.innerHeight);
+    renderer.setSize( size*0.6, size*0.6 );
 }
 
 function onDocumentMouseMove( event ) {
-    mouseX = ( event.clientX - windowHalfX ) / 2;
-    mouseY = ( event.clientY - windowHalfY ) / 2;
+    mouseX = (event.clientX - windowHalfX) / 2;
+    mouseY = (event.clientY - windowHalfY) / 2;
 }
-
-
 
 function animate() {
     requestAnimationFrame( animate );
