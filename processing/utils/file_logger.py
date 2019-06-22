@@ -1,5 +1,5 @@
 from datetime import datetime
-from inspect import getframeinfo, stack
+from traceback import extract_stack
 from json import load as jsonFileToDict
 
 logPath = '../EEG.log'
@@ -15,12 +15,20 @@ def generateTime():
 	t = datetime.now()
 	return '{}{}Z'.format(t.strftime('%Y-%m-%dT%H:%M:%S.'), t.strftime('%f')[0:3])
 
+def tracePath():
+  stack = extract_stack()
+  for trace in reversed(stack):
+    file, line, method, call = trace
+    if 'file_logger.py' not in file:
+      return str(file), str(line)
+  return 'Error Tracing Stack', '-1'
+
 def writeLog(msg, logType):
-	header = generateHeader(logType)
-	fileinfo = getframeinfo(stack()[1][0])
-	filepath = ''.join(fileinfo.filename.split('/')[-2:])
-	logString = '{}{} <{}:{}>\n'.format(header, msg, fileinfo.filename, fileinfo.lineno)
-	writeToFile(logString)
+  header = generateHeader(logType)  
+  filename, line_number = tracePath()
+  filename = ''.join(filename.split('/')[-1:])
+  logString = '{}{} <{}:{}>\n'.format(header, msg, filename, line_number)
+  writeToFile(logString)
 
 def log(msg):
 	writeLog(msg, 'LOG')

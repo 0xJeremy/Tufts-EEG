@@ -54,7 +54,7 @@ function init() {
     /// BRAIN MODEL ///
     ///////////////////
 
-    var loader = new THREE.OBJLoader( manager );
+    var loader = new THREE.OBJLoader(manager);
     loader.load( '/static/brain.OBJ', function ( object ) {
 	   brain = object;
 	   object.position.y = 0;
