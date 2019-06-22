@@ -72,7 +72,7 @@ const handler = (socket) => {
 		const msg = bytes.toString();
 		console.log('Python Data Received: ' + msg);
 		probes = JSON.parse(msg);
-		io.emit('sendProbes', probes);
+		io.emit('sendProbes', probes["data"]);
 	});
 };
 

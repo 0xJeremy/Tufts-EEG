@@ -19,5 +19,5 @@ socket.emit('OK');
 
 socket.on('sendProbes', function(msg) {
 	console.log(msg);
-	text.innerHTML = msg.message;
+	text.innerHTML = msg;
 })
