@@ -9,6 +9,9 @@ var directionalLight;
 
 var mouseX = 0, mouseY = 0;
 
+windowHalfX = window.innerWidth / 2;
+windowHalfY = window.innerHeight / 2;
+
 var brain;
 
 init();
@@ -70,7 +73,7 @@ function init() {
     renderer.setSize( size*0.6, size*0.6 );
     container.appendChild(renderer.domElement);
 
-    // document.addEventListener('mousemove', onDocumentMouseMove, false);
+    document.addEventListener('mousemove', onDocumentMouseMove, false);
 
     window.addEventListener('resize', onWindowResize, false);
 }
@@ -84,10 +87,10 @@ function onWindowResize() {
     renderer.setSize( size*0.6, size*0.6 );
 }
 
-// function onDocumentMouseMove( event ) {
-//     mouseX = (event.clientX - windowHalfX) / 2;
-//     mouseY = (event.clientY - windowHalfY) / 2;
-// }
+function onDocumentMouseMove( event ) {
+    mouseX = (event.clientX - windowHalfX) / 2;
+    mouseY = (event.clientY - windowHalfY) / 2;
+}
 
 function animate() {
     requestAnimationFrame( animate );
@@ -101,13 +104,13 @@ function render() {
 
     // We have the camera orbit in a sphere around the brain, having
     // the light follow so it's well-lit.
-    // camera.position.x = r * Math.sin( mouseX * s ) * Math.cos(mouseY/2 * s);
-    // camera.position.z = -r * Math.cos( mouseX * s ) * Math.cos(mouseY/2 * s);
-    // camera.position.y = r * Math.sin(mouseY/2 * s);
+    camera.position.x = r * Math.sin( mouseX * s ) * Math.cos(mouseY/2 * s);
+    camera.position.z = -r * Math.cos( mouseX * s ) * Math.cos(mouseY/2 * s);
+    camera.position.y = r * Math.sin(mouseY/2 * s);
 
-    // directionalLight.position.x = r * Math.sin( mouseX * s ) * Math.cos(mouseY/2 * s);
-    // directionalLight.position.z = -r * Math.cos( mouseX * s ) * Math.cos(mouseY/2 * s);
-    // directionalLight.position.y = r * Math.sin(mouseY/2 * s);
+    directionalLight.position.x = r * Math.sin( mouseX * s ) * Math.cos(mouseY/2 * s);
+    directionalLight.position.z = -r * Math.cos( mouseX * s ) * Math.cos(mouseY/2 * s);
+    directionalLight.position.y = r * Math.sin(mouseY/2 * s);
 
     brain.rotation.y += 0.01;
     
