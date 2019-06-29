@@ -49,13 +49,13 @@
 					<a class="dropdown-toggle" data-toggle="collapse" href="#showData" role="button" aria-expanded="false" aria-controls="showData">View Live Data Feed
 					</a>
 					<div class="collapse" id="showData">
-					    <table class="table table-dark">
+						<table class="table table-dark">
 							<thead>
-						    	<tr>
-						    		<th scope="col">Raw Electrode Values</th>
-						    	</tr>
-						  	</thead>
-						  		<tbody id="probeTable">
+								<tr>
+									<th scope="col">Raw Electrode Values</th>
+								</tr>
+							</thead>
+								<tbody id="probeTable">
 							</tbody>
 						</table>
 					</div>
@@ -66,25 +66,18 @@
 					<div class="collapse" id="showOptions">
 						<table class="table table-dark">
 							<thead class="view-options">
-						    	<tr>
-						    		<th scope="col">#TODO: Add view options.</th>
-						    	</tr>
+								<tr>
+									<th scope="col">#TODO: Add view options.</th>
+								</tr>
 						</table>
 					</div>
 				</li>
 				<li>
-					<a class="dropdown-toggle" data-toggle="collapse" href="#showTeamInfo" role="button" aria-expanded="false" aria-controls="showTeamInfo">Team Information
+					<a class="dropdown-toggle" data-toggle="modal" href="#showTeamInfo" data-target="#teamInfoModal" role="button">
+						Team Information
 					</a>
-					<div class="collapse team-info" id="showTeamInfo">
-						<table class="table table-dark">
-							<thead class="team-info">
-						    	<tr>
-						    		<th scope="col">We are a group of undergraduate students at Tufts University interested in Brain-Computer interfaces, and biomed technology. </br></br>This project was funded by the Tufts MAKE club, and made possible by the hard work put in by the team.</th>
-						    	</tr>
-						</table>
-					</div>
 				</li>
-				<li> <a href="https://github.com/0xJeremy/Tufts-EEG">See Project On Github</a> </li>
+				<li> <a href="https://github.com/0xJeremy/Tufts-EEG" target="_blank">See Project On Github</a> </li>
 			</ul>
 		</div>
 
@@ -94,6 +87,32 @@
 
 		<div id="page-content-wrapper">
 			<div class="container-fluid-brain" id="threejsbrain">
+			</div>
+		</div>
+
+		<!------------------->
+		<!-- MODAL CONTENT -->
+		<!------------------->
+
+		<div class="modal fade direction-left" id="teamInfoModal" tabindex="-1" role="dialog" aria-labelledby="showTeamInfo" aria-hidden="true">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title" id="exampleModalLabel">Team Information</h5>
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+					</div>
+					<div class="modal-body text-center">
+						We are a group of undergraduate students at Tufts University interested in Brain-Computer interfaces, and biomedical technology. </br></br>This project was funded by the Tufts MAKE club, and made possible by the hard work put in by the team.
+					</div>
+					<div class="modal-footer">
+						<a  href="https://github.com/0xJeremy/Tufts-EEG" target="_blank">
+							<button type="button" class="btn btn-primary">See More About the Project</button>
+						</a>
+						<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+					</div>
+				</div>
 			</div>
 		</div>
 
@@ -107,8 +126,8 @@
 
 <script type="text/javascript" src="js/socket.io.js"></script>
 <script type="text/javascript" src="communication.js"></script>
-<!-- <script type="text/javascript" src="js/three.js"></script>
+<script type="text/javascript" src="js/three.js"></script>
 <script type="text/javascript" src="js/OBJLoader.js"></script>
-<script type="text/javascript" src="render.js"></script> -->
+<script type="text/javascript" src="render.js"></script>
 
 </html>

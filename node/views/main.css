@@ -3,10 +3,10 @@
 /***********************/
 
 body {
-		direction: rtl;
-		text-align:right;
-		overflow-x: hidden;
-		background: #000;
+	direction: rtl;
+	text-align:right;
+	overflow-x: hidden;
+	background: #000;
 }
 
 .title-text {
@@ -58,18 +58,15 @@ body {
 	margin-right: 0px;
 }
 
-.team-info {
+.view-options {
 	direction: ltr;
 	border: none;
 	line-height: 1.4em;
 	padding-right: 0.4em;
 }
 
-.view-options {
+.direction-left {
 	direction: ltr;
-	border: none;
-	line-height: 1.4em;
-	padding-right: 0.4em;
 }
 
 /******************/
