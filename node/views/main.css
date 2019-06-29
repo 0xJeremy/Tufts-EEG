@@ -1,3 +1,7 @@
+/***********************/
+/* MAIN CONTENT STYLES */
+/***********************/
+
 body {
 		direction: rtl;
 		text-align:right;
@@ -54,7 +58,9 @@ body {
 	margin-right: 0px;
 }
 
-/* Sidebar Styles */
+/******************/
+/* SIDEBAR STYLES */
+/******************/
 
 .sidebar-nav {
 	position: absolute;
@@ -111,6 +117,10 @@ body {
     margin-left: auto;
     height: 100%
 }
+
+/*******************/
+/*FOR LARGE SCREENS*/
+/*******************/
 
 @media(min-width:768px) {
 	#wrapper {
