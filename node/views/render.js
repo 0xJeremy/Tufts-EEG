@@ -28,8 +28,8 @@ function init() {
     container = document.createElement('div');
     puthere.appendChild(container);
 
-    camera = new THREE.PerspectiveCamera(45, 1, 1, 2000);
-    camera.position.z = -10;
+    camera = new THREE.PerspectiveCamera(45, document.getElementById("threejsbrain").offsetWidth / (window.innerHeight * 0.8), 1, 2000);
+    camera.position.z = -30;
 
     /////////////
     /// SCENE ///
@@ -69,11 +69,10 @@ function init() {
     ////////////////
 
     renderer = new THREE.WebGLRenderer();
-    size = Math.min(window.innerWidth, window.innerHeight);
-    renderer.setSize( size*0.6, size*0.6 );
+    renderer.setSize( document.getElementById("threejsbrain").offsetWidth, window.innerHeight * 0.8 );
     container.appendChild(renderer.domElement);
 
-    document.addEventListener('mousemove', onDocumentMouseMove, false);
+    // document.addEventListener('mousemove', onDocumentMouseMove, false);
 
     window.addEventListener('resize', onWindowResize, false);
 }
@@ -83,14 +82,14 @@ function init() {
 /////////////////
 
 function onWindowResize() {
-    size = Math.min(window.innerWidth, window.innerHeight);
-    renderer.setSize( size*0.6, size*0.6 );
+    renderer.setSize( document.getElementById("threejsbrain").offsetWidth, window.innerHeight * 0.8 );
+    camera.aspect = document.getElementById("threejsbrain").offsetWidth / (window.innerHeight * 0.8);
 }
 
-function onDocumentMouseMove( event ) {
-    mouseX = (event.clientX - windowHalfX) / 2;
-    mouseY = (event.clientY - windowHalfY) / 2;
-}
+// function onDocumentMouseMove( event ) {
+//     mouseX = (event.clientX - windowHalfX) / 2;
+//     mouseY = (event.clientY - windowHalfY) / 2;
+// }
 
 function animate() {
     requestAnimationFrame( animate );

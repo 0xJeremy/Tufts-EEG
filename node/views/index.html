@@ -2,37 +2,76 @@
 <html>
 <head>
 	<title>Tufts EEG</title>
-	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+	<!------------------->
+	<!-- DISPLAY FILES -->
+	<!------------------->
+
+	<link rel="stylesheet" type="text/css" href="bootstrap/bootstrap.css">
+	<script type="text/javascript" src="bootstrap/jquery.js"></script>
+	<script type="text/javascript" src="bootstrap/bootstrap.js"></script>
 	<link rel="stylesheet" href="main.css">
-	<script src="js/socket.io.js"></script>
+	<script type="text/javascript" src="page.js"></script>
+	
 </head>
+
 <body>
 
-</body>
-<body>
-	<div class="container-fluid bg">
-		<div class="container-fluid center-vertical">
-			<p class="title-text text-center">// <i>Tufts</i> BCI Team //</p>
-			<div class="container-fluid w-75 bg-inner shadow-lg mb-5 rounded">
-				<div class="d-flex justify-content-center" id='threejsbrain'></div>
-				<table class="table table-striped w-75 container-fluid">
-				  <thead>
-					<tr>
-					  <th scope="col">Timestamp</th>
-					  <th scope="col">Probe Data</th>
-					  <th scope="col">Input Source</th>
-					</tr>
-				  </thead>
-				  	<tbody id="probeTable">
-				  </tbody>
-				</table>
+	<!------------>
+	<!-- NAVBAR -->
+	<!------------>
+	<nav class="navbar navbar-expand navbar-dark bg-primary"> 
+		<a href="#menu-toggle" id="menu-toggle" class="navbar-brand">
+			<span class="navbar-toggler-icon"></span>
+		</a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navBarToggle" aria-controls="navBarToggle" aria-expanded="false" aria-label="Toggle navigation"> 
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="collapse navbar-collapse" id="navBarToggle">
+			<ul class="navbar-nav mr-auto">
+				<li class="nav-item title-text">Tufts BCI Team</li>
+			</ul>
+		</div>
+	</nav>
+
+	<div id="wrapper" class="toggled">
+
+		<!------------->
+		<!-- SIDEBAR -->
+		<!------------->
+
+		<div id="sidebar-wrapper">
+			<ul class="sidebar-nav">
+				<li class="sidebar-brand"> <a href="#"> EEG Toolbox </a> </li>
+				<li> <a href="#">General Information</a> </li>
+				<li> <a href="#">Live Data Feed</a> </li>
+				<li> <a href="#">View Options</a> </li>
+				<li> <a href="#">Team Information</a> </li>
+				<li> <a href="https://github.com/0xJeremy/Tufts-EEG">Source</a> </li>
+			</ul>
+		</div>
+
+		<!------------------>
+		<!-- MAIN CONTENT -->
+		<!------------------>
+
+		<div id="page-content-wrapper">
+			<div class="container-fluid-brain" id="threejsbrain">
 			</div>
 		</div>
+
+
 	</div>
 </body>
 
-<script type="text/javascript" src="scripts.js"></script>
+<!------------->
+<!-- SCRIPTS -->
+<!------------->
+
+<script type="text/javascript" src="js/socket.io.js"></script>
+<script type="text/javascript" src="communication.js"></script>
 <script type="text/javascript" src="js/three.js"></script>
 <script type="text/javascript" src="js/OBJLoader.js"></script>
 <script type="text/javascript" src="render.js"></script>
+
 </html>
