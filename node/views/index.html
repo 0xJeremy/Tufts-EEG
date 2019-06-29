@@ -20,12 +20,12 @@
 	<!------------>
 	<!-- NAVBAR -->
 	<!------------>
-	
+
 	<nav class="navbar navbar-expand navbar-dark bg-primary"> 
 		<a href="#menu-toggle" id="menu-toggle" class="navbar-brand">
 			<span class="navbar-toggler-icon"></span>
 		</a>
-		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navBarToggle" aria-controls="navBarToggle" aria-expanded="false" aria-label="Toggle navigation"> 
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navBarToggle" aria-controls="navBarToggle" aria-expanded="false" aria-label="Toggle navigation" onclick="onWindowResize()"> 
 			<span class="navbar-toggler-icon"></span>
 		</button>
 		<div class="collapse navbar-collapse" id="navBarToggle">
@@ -43,12 +43,48 @@
 
 		<div id="sidebar-wrapper">
 			<ul class="sidebar-nav">
-				<li class="sidebar-brand"> <a href="#"> EEG Toolbox </a> </li>
+				<li class="sidebar-brand">EEG Toolbox</li>
 				<li> <a href="#">General Information</a> </li>
-				<li> <a href="#">Live Data Feed</a> </li>
-				<li> <a href="#">View Options</a> </li>
-				<li> <a href="#">Team Information</a> </li>
-				<li> <a href="https://github.com/0xJeremy/Tufts-EEG">Source</a> </li>
+				<li>
+					<a class="dropdown-toggle" data-toggle="collapse" href="#showData" role="button" aria-expanded="false" aria-controls="showData">View Live Data Feed
+					</a>
+					<div class="collapse" id="showData">
+					    <table class="table table-dark">
+							<thead>
+						    	<tr>
+						    		<th scope="col">Raw Electrode Values</th>
+						    	</tr>
+						  	</thead>
+						  		<tbody id="probeTable">
+							</tbody>
+						</table>
+					</div>
+				</li>
+				<li>
+					<a class="dropdown-toggle" data-toggle="collapse" href="#showOptions" role="button" aria-expanded="false" aria-controls="showOptions">Display Options & Settings
+					</a>
+					<div class="collapse" id="showOptions">
+						<table class="table table-dark">
+							<thead class="view-options">
+						    	<tr>
+						    		<th scope="col">#TODO: Add view options.</th>
+						    	</tr>
+						</table>
+					</div>
+				</li>
+				<li>
+					<a class="dropdown-toggle" data-toggle="collapse" href="#showTeamInfo" role="button" aria-expanded="false" aria-controls="showTeamInfo">Team Information
+					</a>
+					<div class="collapse team-info" id="showTeamInfo">
+						<table class="table table-dark">
+							<thead class="team-info">
+						    	<tr>
+						    		<th scope="col">We are a group of undergraduate students at Tufts University interested in Brain-Computer interfaces, and biomed technology. </br></br>This project was funded by the Tufts MAKE club, and made possible by the hard work put in by the team.</th>
+						    	</tr>
+						</table>
+					</div>
+				</li>
+				<li> <a href="https://github.com/0xJeremy/Tufts-EEG">See Project On Github</a> </li>
 			</ul>
 		</div>
 
@@ -71,8 +107,8 @@
 
 <script type="text/javascript" src="js/socket.io.js"></script>
 <script type="text/javascript" src="communication.js"></script>
-<script type="text/javascript" src="js/three.js"></script>
+<!-- <script type="text/javascript" src="js/three.js"></script>
 <script type="text/javascript" src="js/OBJLoader.js"></script>
-<script type="text/javascript" src="render.js"></script>
+<script type="text/javascript" src="render.js"></script> -->
 
 </html>

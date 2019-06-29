@@ -12,6 +12,10 @@ var mouseX = 0, mouseY = 0;
 windowHalfX = window.innerWidth / 2;
 windowHalfY = window.innerHeight / 2;
 
+function calculateBrainAspect() {
+    return document.getElementById("threejsbrain").offsetWidth / (window.innerHeight * 0.8)
+}
+
 var brain;
 
 init();
@@ -28,7 +32,7 @@ function init() {
     container = document.createElement('div');
     puthere.appendChild(container);
 
-    camera = new THREE.PerspectiveCamera(45, document.getElementById("threejsbrain").offsetWidth / (window.innerHeight * 0.8), 1, 2000);
+    camera = new THREE.PerspectiveCamera(45, calculateBrainAspect(), 1, 2000);
     camera.position.z = -30;
 
     /////////////
@@ -83,7 +87,7 @@ function init() {
 
 function onWindowResize() {
     renderer.setSize( document.getElementById("threejsbrain").offsetWidth, window.innerHeight * 0.8 );
-    camera.aspect = document.getElementById("threejsbrain").offsetWidth / (window.innerHeight * 0.8);
+    camera.aspect = calculateBrainAspect();
 }
 
 // function onDocumentMouseMove( event ) {

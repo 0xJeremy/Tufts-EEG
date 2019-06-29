@@ -30,16 +30,14 @@ var ENTRIES_DISPLAYED = 5;
 /// DISPLAY FUNCTIONS ///
 /////////////////////////
 
-displayProbe.innerHTML = "<tr><th scope=\"row\">NaN</th><td>Null</td><td>Null</td></tr>";
+displayProbe.innerHTML = "<tr><th scope=\"row\">Null</th></td></tr>";
 
 function renderProbeData(msg) {
 	if(probeData.length == ENTRIES_DISPLAYED) {probeData.shift();}
 	probeData.push(msg);
 	var displayText = '';
 	for(var i = probeData.length-1; i >= 0; i--) {
-		displayText += "<tr><th scope=\"row\">" + probeData[i]['time'] + 
-			           "</th><td>" + probeData[i]['data'] + 
-			           "</td><td>Python Processing</td></tr>";
+		displayText += "<tr><th scope=\"row\">" + probeData[i]['data'] + "</th></td></tr>";
 	}
 	displayProbe.innerHTML = displayText;
 }
