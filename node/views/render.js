@@ -7,13 +7,15 @@ var container, stats;
 var camera, scene, renderer;
 var directionalLight;
 
+var brainRotation = true;
+
 var mouseX = 0, mouseY = 0;
 
 windowHalfX = window.innerWidth / 2;
 windowHalfY = window.innerHeight / 2;
 
 function calculateBrainAspect() {
-    return document.getElementById("threejsbrain").offsetWidth / (window.innerHeight * 0.8)
+    return document.getElementById("threejsbrain").offsetWidth / (window.innerHeight * 0.8);
 }
 
 var brain;
@@ -33,7 +35,7 @@ function init() {
     puthere.appendChild(container);
 
     camera = new THREE.PerspectiveCamera(45, calculateBrainAspect(), 1, 2000);
-    camera.position.z = -30;
+    camera.position.z = -100;
 
     /////////////
     /// SCENE ///
@@ -86,8 +88,9 @@ function init() {
 /////////////////
 
 function onWindowResize() {
-    renderer.setSize( document.getElementById("threejsbrain").offsetWidth, window.innerHeight * 0.8 );
     camera.aspect = calculateBrainAspect();
+    camera.updateProjectionMatrix();
+    renderer.setSize( document.getElementById("threejsbrain").offsetWidth, window.innerHeight * 0.8 );
 }
 
 // function onDocumentMouseMove( event ) {
@@ -96,8 +99,15 @@ function onWindowResize() {
 // }
 
 function animate() {
-    requestAnimationFrame( animate );
-    render();
+    if (brainRotation) {
+        requestAnimationFrame( animate );
+        render();
+    }
+}
+
+function toggleBrainRotation() {
+    brainRotation = !brainRotation;
+    animate();
 }
 
 function render() {
