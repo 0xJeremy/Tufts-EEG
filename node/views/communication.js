@@ -8,6 +8,7 @@ var displayProbe = document.getElementById("probeTable");
 var probeData = []
 var socket = io();
 var ENTRIES_DISPLAYED = 5;
+var pythonConnection = false;
 
 /////////////////////////
 /// API COMMUNICATION ///
@@ -31,6 +32,7 @@ var ENTRIES_DISPLAYED = 5;
 /////////////////////////
 
 displayProbe.innerHTML = "<tr><th scope=\"row\">Null</th></td></tr>";
+document.getElementById('pythonStatus').innerHTML = "Python Status: <span style=\"color: rgba(255, 100, 100, 0.8)\">DISCONNECTED</span>"		
 
 function renderProbeData(msg) {
 	if(probeData.length == ENTRIES_DISPLAYED) {probeData.shift();}
@@ -42,6 +44,15 @@ function renderProbeData(msg) {
 	displayProbe.innerHTML = displayText;
 }
 
+function pythonStatus() {
+	if (pythonConnection) {
+		document.getElementById('pythonStatus').innerHTML = "Python Status: <span style=\"color: rgba(100, 255, 100, 0.8)\">CONNECTED</span>"
+	}
+	else {
+		document.getElementById('pythonStatus').innerHTML = "Python Status: <span style=\"color: rgba(255, 100, 100, 0.8)\">DISCONNECTED</span>"		
+	}
+}
+
 ////////////////////////////
 /// SOCKET COMMUNICATION ///
 ////////////////////////////
@@ -50,7 +61,15 @@ socket.emit('OK');
 
 socket.on('sendProbes', function(msg) {
 	console.log(msg);
+	if (msg['data'] == "\"connected\"") {
+		pythonConnection = true;
+		pythonStatus();
+		return;
+	}
+	else if (msg['data'] == "\"disconnected\"") {
+		pythonConnection = false;
+		pythonStatus();
+		return;
+	}
 	renderProbeData(msg);
 })
-
-

@@ -20,6 +20,7 @@ socket = comm()
 ############
 
 def main():
+	socket.send('connected')
 	while True:
 		try:
 			tmp = input()
@@ -27,6 +28,7 @@ def main():
 			socket.send(data)
 			
 		except KeyboardInterrupt:
+			socket.send('disconnected')
 			socket.close()
 			sys.exit()
 
