@@ -125,7 +125,9 @@ function render() {
     directionalLight.position.z = -r * Math.cos( mouseX * s ) * Math.cos(mouseY/2 * s);
     directionalLight.position.y = r * Math.sin(mouseY/2 * s);
 
-    brain.rotation.y += 0.01;
+    try {
+        brain.rotation.y += 0.005;
+    }catch(err) {}
     
     camera.lookAt( scene.position );
 

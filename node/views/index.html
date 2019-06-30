@@ -44,11 +44,21 @@
 		<div id="sidebar-wrapper">
 			<ul class="sidebar-nav">
 				<li class="sidebar-brand">EEG Toolbox</li>
-				<li> <a href="#">General Information</a> </li>
+				<li>
+					<a class="dropdown-toggle" data-toggle="collapse" href="#showInfo" role="button" aria-expanded="false" aria-controls="showInfo">General Information
+						</a>
+						<div class="collapse general-info" id="showInfo">
+							<table class="table table-dark">
+								<thead>
+									<tr>
+										<th scope="col">Welcome to the Tufts BCI Team's EEG Visualizer! </br></br>This website displays, in realtime, data from our EEG headset.</th>
+									</tr>
+							</table>
+						</div>
 				<li>
 					<a class="dropdown-toggle" data-toggle="collapse" href="#showData" role="button" aria-expanded="false" aria-controls="showData">View Live Data Feed
 					</a>
-					<div class="collapse" id="showData">
+					<div class="collapse" id="showData" style="direction: ltr;">
 						<table class="table table-dark">
 							<thead>
 								<tr>
@@ -79,9 +89,11 @@
 					</div>
 				</li>
 				<li>
-					<a class="dropdown-toggle" data-toggle="modal" href="#showTeamInfo" data-target="#teamInfoModal" role="button">
-						Team Information
-					</a>
+					<div class="dropright">
+						<a class="dropdown-toggle" data-toggle="modal" href="#showTeamInfo" data-target="#teamInfoModal" role="button">
+							Team Information
+						</a>
+					</div>
 				</li>
 				<li> <a href="https://github.com/0xJeremy/Tufts-EEG" target="_blank">See Project On Github</a> </li>
 			</ul>
