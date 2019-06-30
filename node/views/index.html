@@ -22,7 +22,7 @@
 	<!------------>
 
 	<nav class="navbar navbar-expand navbar-dark bg-primary"> 
-		<a href="#menu-toggle" id="menu-toggle" class="navbar-brand">
+		<a href="#menu-toggle" id="menu-toggle" class="navbar-brand" onclick="pageResize()">
 			<span class="navbar-toggler-icon"></span>
 		</a>
 		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navBarToggle" aria-controls="navBarToggle" aria-expanded="false" aria-label="Toggle navigation"> 
@@ -84,6 +84,9 @@
 								<tr>
 									<th><button type="button" class="btn btn-primary" onclick="toggleBrainRotation()">Toggle Brain Rotation</button></th>
 								</tr>
+								<tr>
+									<th><button type="button" class="btn btn-success" onclick="toggleBrainRotation()">Toggle 2D - 3D View</button></th>
+								</tr>
 							</tbody>
 						</table>
 					</div>
@@ -97,6 +100,7 @@
 				</li>
 				<li> <a href="https://github.com/0xJeremy/Tufts-EEG" target="_blank">See Project On Github</a> </li>
 			</ul>
+			<div class="attribution">Made with ❤️ by the Tufts BCI Team</div>
 		</div>
 
 		<!------------------>
@@ -104,9 +108,11 @@
 		<!------------------>
 
 		<div id="page-content-wrapper" style="text-align: center;">
-			<div class="container-fluid-brain" id="threejsbrain">
+			<div class="container-fluid-brain" id="threejsbrain"></div>
+<!-- 			<div id="heatmap">
+				<img src="static/brain.png" class="heatmap-display">
 			</div>
-		</div>
+ -->		</div>
 
 		<!------------------->
 		<!-- MODAL CONTENT -->
@@ -144,6 +150,8 @@
 
 <script type="text/javascript" src="js/socket.io.js"></script>
 <script type="text/javascript" src="communication.js"></script>
+<script type="text/javascript" src="js/heatmap.js"></script>
+<!-- <script type="text/javascript" src="visualizer.js"></script> -->
 <script type="text/javascript" src="js/three.js"></script>
 <script type="text/javascript" src="js/OBJLoader.js"></script>
 <script type="text/javascript" src="render.js"></script>
