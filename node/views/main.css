@@ -102,6 +102,32 @@ body {
 	visibility: hidden;
 }
 
+.modal-body {
+	font-size: 18px;
+}
+
+.legend {
+	direction: ltr;
+	list-style: none;
+	bottom: 1em;
+	font-size: 20px;
+	margin-right: 2em;
+	padding-top: 0.5em;
+	padding-bottom: 0.5em; 
+	padding-right: 0.75em; 
+	padding-left: 1.5em;
+	position: absolute;
+	color: #fff;
+	border-radius: 4px;
+	border: 1px rgb(100, 100, 100) solid;
+	border-right: 8px rgb(100, 100, 100) solid;
+	background: #111;
+}
+
+.legend li {
+	padding-right: 0.5em;
+}
+
 /******************/
 /* SIDEBAR STYLES */
 /******************/
