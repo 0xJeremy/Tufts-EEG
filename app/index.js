@@ -33,11 +33,11 @@ app.use(function (req, res, next) {
 ///////////////////////////
 
 app.use(bodyParser.json());
-app.set('views', __dirname + '/views');
-app.use('/', express.static(__dirname + '/views'));
+app.set('client', __dirname + '/client');
+app.use('/', express.static(__dirname + '/client'));
 
 app.get('/', function(req, res) {
-    res.render('index.html');
+    res.render('../client/index.html');
 });
 
 app.get('/getProbe', function(req, res){
