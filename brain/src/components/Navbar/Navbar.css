@@ -1,0 +1,137 @@
+body {
+	direction: rtl;
+	text-align: right;
+	overflow-x: hidden;
+	background: #000;
+}
+
+.title-text {
+	font-weight: lighter;
+	font-family: bookman;
+	font-size: 2em;
+	color: #ecf0f1;
+}
+
+#wrapper {
+	padding-left: 0;
+	-webkit-transition: all 0.5s ease;
+	-moz-transition: all 0.5s ease;
+	-o-transition: all 0.5s ease;
+	transition: all 0.5s ease;
+	height: 100%;
+}
+
+#wrapper.toggled {
+	padding-right: 250px;
+}
+
+#sidebar-wrapper {
+	z-index: 1;
+	position: fixed;
+	right: 360px;
+	width: 0;
+	height: 100%;
+	margin-right: -360px;
+	overflow-y: auto;
+	background: #111;
+	-webkit-transition: all 0.6s ease;
+	-moz-transition: all 0.6s ease;
+	-o-transition: all 0.6s ease;
+	transition: all 0.6s ease;
+}
+
+#wrapper.toggled #sidebar-wrapper {
+	width: 360px;
+}
+
+#page-content-wrapper {
+	width: 100%;
+	position: absolute;
+}
+
+#wrapper.toggled #page-content-wrapper {
+	position: absolute;
+	margin-right: 0px;
+}
+
+.view-options {
+	direction: ltr;
+	border: none;
+	line-height: 1.4em;
+	padding-right: 0.4em;
+}
+
+.direction-left {
+	direction: ltr;
+}
+
+.container-fluid-brain {
+	width: 100%;
+	margin-right: auto;
+	margin-left: auto;
+	height: 100%
+}
+
+#wrapper.toggled .heatmap-display {
+	height: 100%;
+	width: 100%;
+}
+
+.heatmap-display {
+	height: 80%;
+	width: 80%;
+	-webkit-transition: all 0.6s ease;
+	-moz-transition: all 0.6s ease;
+	-o-transition: all 0.6s ease;
+	transition: all 0.6s ease;
+}
+
+#wrapper.toggled .attribution {
+	visibility: visible;
+}
+
+.attribution {
+	right: 1vh;
+	bottom: 1vh;
+	color: #fff;
+	position: fixed;
+	visibility: hidden;
+}
+
+.modal-body {
+	font-size: 18px;
+}
+
+.info-box {
+	direction: ltr;
+	list-style: none;
+	bottom: 1em;
+	font-size: 20px;
+	margin-right: 2em;
+	padding-top: 0.5em;
+	padding-bottom: 0.5em; 
+	position: absolute;
+	color: #fff;
+	border-radius: 4px;
+	border: 1px rgb(100, 100, 100) solid;
+	
+	background: #111;
+}
+
+.legend {
+	padding-right: 0.75em; 
+	padding-left: 1.5em;
+	border-right: 8px rgb(100, 100, 100) solid;
+}
+
+.legend li {
+	padding-right: 0.5em;
+}
+
+.connection-status {
+	padding-right: 1.5em; 
+	padding-left: 0.75em;
+	left: 1em;
+	bottom: 1.8em;
+	border-left: 8px rgb(100, 100, 100) solid;
+}
